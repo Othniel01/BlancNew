@@ -56,6 +56,10 @@ export default function TaskForm() {
 
     if (user) {
       const userId = user.uid; // Get the user ID
+      const userEmail = user.email || ""; // Get the user's email
+
+      // Add the user's email to the assignedTo array
+      const updatedAssignedTo = [userEmail, ...assignedTo];
 
       const newTask = {
         title,
@@ -64,7 +68,7 @@ export default function TaskForm() {
         dueDate: dueDate ? format(dueDate, "yyyy-MM-dd") : null,
         status: "newRequest",
         priority,
-        assignedTo,
+        assignedTo: updatedAssignedTo,
         startDate: format(startDate, "yyyy-MM-dd"),
         imageUrl: "",
         fileUrl: "",
