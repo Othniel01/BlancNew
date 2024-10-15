@@ -59,6 +59,13 @@ function DraggableBox({
       : undefined,
   };
 
+  const limitWords = (text: string, limit: number): string => {
+    const words = text.split(" ");
+    return words.length > limit
+      ? words.slice(0, limit).join(" ") + "..."
+      : text;
+  };
+
   return (
     <div
       ref={setNodeRef}
@@ -91,7 +98,7 @@ function DraggableBox({
       </div>
       <h1 className="font-semibold w-[80%] text-base mt-2">{task.title}</h1>
       <p className="text-[12px] w-[80%] mt-1 text-[#808691]">
-        {task.description}
+        {limitWords(task.description, 10)}
       </p>
       <hr className="w-full mt-4 h-[1px] bg-[#e4e6f0]" />
       <div className="flex items-center -space-x-4 absolute left-5 bottom-3 flex-row">

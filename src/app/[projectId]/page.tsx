@@ -19,6 +19,7 @@ import Kanban from "@/lib/components/kanban";
 import { TaskTable } from "@/lib/components/data-table/data-table";
 import OpenTask from "@/lib/components/edit-task";
 import SkeletonLoader from "@/lib/components/skeleton-loader-text";
+import DeleteProjects from "@/lib/components/delete-project";
 
 const ProjectOne = () => {
   const { projectId } = useParams(); // Get the projectId from the URL
@@ -67,15 +68,15 @@ const ProjectOne = () => {
       <div className="w-full h-full">
         <div className="detailBar bg-[#ffff] w-full h-[100px] relative pl-[2rem] pt-[0.8rem] border-b border-solid border-b-[color:var(--primary-stroke)]">
           {/* Display projectTitle or loading state */}
-          <h1 className="text-base font-semibold">
+          <h1 className="text-base gap-2 flex items-center font-semibold">
             {projectTitle ? projectTitle : <SkeletonLoader />}
           </h1>
 
-          <h1 className="text-xs mt-1">
+          <h1 className="text-xs w-[600px] mt-1">
             {projectDescription ? projectDescription : <SkeletonLoader />}
           </h1>
 
-          <div className="select-container gap-8 absolute bottom-4 flex flex-row items-center text-[14px]">
+          <div className="select-container gap-8 absolute bottom-4 right-10 flex flex-row items-center text-[14px]">
             {/* <Sheet>
               <SheetTrigger>
                 <p className="cursor-pointer text-xs">Timeline</p>
@@ -93,6 +94,8 @@ const ProjectOne = () => {
 
             {/* <p className="text-xs cursor-pointer">Discussions</p> */}
             <OpenTask selectedTaskId={null} />
+
+            <DeleteProjects />
           </div>
         </div>
 
